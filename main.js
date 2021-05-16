@@ -5,11 +5,12 @@ const db = require("./db");
 const app = express();
 app.use(express.json());
 
-app.get("/todos", (req, res) => {});
+app.get("/todos", (req, res) => {
+  res.json(todoModel)
+});
 app.post("/create/todo", (req, res) => {
   const {task ,description, isCompleted, deadline,  priority}= req.body;
-  ​
-   const todo = new userModel(
+   const todo = new todoModel(
     {task ,description, isCompleted, deadline,  priority}
    )
    todo.save().then(result=>{ res.json(result)}).catch(err=>{res.send(err)})
